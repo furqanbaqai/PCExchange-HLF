@@ -1,0 +1,14 @@
+=============== Jul 29, 2018 (UTC) ===============
+18:19:34.248151 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+18:19:34.356624 db@open opening
+18:19:34.411032 version@stat F·[] S·0B[] Sc·[]
+18:19:34.455269 syncDir: sync /var/hyperledger/production/ledgersData/chains/index: invalid argument
+=============== Jul 29, 2018 (UTC) ===============
+18:19:34.939555 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+18:19:34.988559 version@stat F·[] S·0B[] Sc·[]
+18:19:34.993233 db@open opening
+18:19:35.006495 journal@recovery F·1
+18:19:35.009566 journal@recovery recovering @1
+18:19:35.048299 version@stat F·[] S·0B[] Sc·[]
+18:19:35.174884 db@janitor F·2 G·0
+18:19:35.175841 db@open done T·181.577005ms

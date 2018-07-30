@@ -1,0 +1,145 @@
+=============== Jul 29, 2018 (UTC) ===============
+18:15:36.812827 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+18:15:36.818314 db@open opening
+18:15:36.823966 version@stat F·[] S·0B[] Sc·[]
+18:15:36.825071 syncDir: sync /var/hyperledger/production/orderer/index: invalid argument
+=============== Jul 29, 2018 (UTC) ===============
+18:19:28.811113 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+18:19:28.820454 version@stat F·[] S·0B[] Sc·[]
+18:19:28.820996 db@open opening
+18:19:28.823842 journal@recovery F·1
+18:19:28.824910 journal@recovery recovering @1
+18:19:28.840457 version@stat F·[] S·0B[] Sc·[]
+18:19:28.913655 db@janitor F·2 G·0
+18:19:28.914602 db@open done T·92.995866ms
+=============== Jul 29, 2018 (UTC) ===============
+18:27:53.237191 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+18:27:53.249880 version@stat F·[] S·0B[] Sc·[]
+18:27:53.250855 db@open opening
+18:27:53.254917 journal@recovery F·1
+18:27:53.256525 journal@recovery recovering @2
+18:27:53.267579 memdb@flush created L0@4 N·4 S·190B "tes..nfo,v2":"tes..\x00n\x00,v3"
+18:27:53.284030 version@stat F·[1] S·190B[190B] Sc·[0.25]
+18:27:53.321968 db@janitor F·3 G·0
+18:27:53.322086 db@open done T·70.263927ms
+=============== Jul 29, 2018 (UTC) ===============
+18:30:00.930522 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+18:30:00.940844 version@stat F·[1] S·190B[190B] Sc·[0.25]
+18:30:00.941549 db@open opening
+18:30:00.946267 journal@recovery F·1
+18:30:00.947288 journal@recovery recovering @5
+18:30:00.969047 memdb@flush created L0@7 N·1 S·139B "tes..nfo,v6":"tes..nfo,v6"
+18:30:00.979102 version@stat F·[2] S·329B[329B] Sc·[0.50]
+18:30:01.065573 db@janitor F·4 G·0
+18:30:01.065704 db@open done T·123.573139ms
+=============== Jul 29, 2018 (UTC) ===============
+18:34:21.690437 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+18:34:21.702172 version@stat F·[2] S·329B[329B] Sc·[0.50]
+18:34:21.703020 db@open opening
+18:34:21.706989 journal@recovery F·1
+18:34:21.708339 journal@recovery recovering @8
+18:34:21.720578 memdb@flush created L0@10 N·1 S·139B "tes..nfo,v8":"tes..nfo,v8"
+18:34:21.728258 version@stat F·[3] S·468B[468B] Sc·[0.75]
+18:34:21.756537 db@janitor F·5 G·0
+18:34:21.756735 db@open done T·52.755827ms
+=============== Jul 30, 2018 (UTC) ===============
+15:44:51.201266 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+15:44:51.212853 version@stat F·[3] S·468B[468B] Sc·[0.75]
+15:44:51.213064 db@open opening
+15:44:51.213739 journal@recovery F·1
+15:44:51.284190 journal@recovery recovering @11
+15:44:51.406490 memdb@flush created L0@13 N·40 S·582B "asu..nfo,v41":"tes..n\x01\x03,v30"
+15:44:51.564403 version@stat F·[4] S·1KiB[1KiB] Sc·[1.00]
+15:44:51.572847 db@janitor F·6 G·0
+15:44:51.572985 db@open done T·359.831458ms
+15:44:51.636426 table@compaction L0·4 -> L1·0 S·1KiB Q·50
+15:44:51.642799 table@build created L1@16 N·21 S·436B "asu..nfo,v41":"tes..n\x01\x03,v30"
+15:44:51.643018 version@stat F·[0 1] S·436B[0B 436B] Sc·[0.00 0.00]
+15:44:51.644191 syncDir: sync /var/hyperledger/production/orderer/index: invalid argument
+15:44:51.644329 table@commit error I·0 "sync /var/hyperledger/production/orderer/index: invalid argument"
+15:44:52.645608 table@commit retrying N·1
+15:44:52.646215 version@stat F·[0 1] S·436B[0B 436B] Sc·[0.00 0.00]
+15:44:52.656915 syncDir: sync /var/hyperledger/production/orderer/index: invalid argument
+15:44:52.657161 table@commit error I·0 "sync /var/hyperledger/production/orderer/index: invalid argument"
+15:45:00.657621 table@commit retrying N·2
+15:45:00.657849 version@stat F·[0 1] S·436B[0B 436B] Sc·[0.00 0.00]
+15:45:00.659756 syncDir: sync /var/hyperledger/production/orderer/index: invalid argument
+15:45:00.659910 table@commit error I·0 "sync /var/hyperledger/production/orderer/index: invalid argument"
+15:45:08.660097 table@commit retrying N·3
+15:45:08.660306 version@stat F·[0 1] S·436B[0B 436B] Sc·[0.00 0.00]
+15:45:08.661729 syncDir: sync /var/hyperledger/production/orderer/index: invalid argument
+15:45:08.661887 table@commit error I·0 "sync /var/hyperledger/production/orderer/index: invalid argument"
+15:45:16.662536 table@commit retrying N·4
+15:45:16.662723 version@stat F·[0 1] S·436B[0B 436B] Sc·[0.00 0.00]
+15:45:16.663564 syncDir: sync /var/hyperledger/production/orderer/index: invalid argument
+15:45:16.663654 table@commit error I·0 "sync /var/hyperledger/production/orderer/index: invalid argument"
+15:45:24.664372 table@commit retrying N·5
+15:45:24.664581 version@stat F·[0 1] S·436B[0B 436B] Sc·[0.00 0.00]
+15:45:24.665933 syncDir: sync /var/hyperledger/production/orderer/index: invalid argument
+15:45:24.666046 table@commit error I·0 "sync /var/hyperledger/production/orderer/index: invalid argument"
+15:45:32.666288 table@commit retrying N·6
+15:45:32.666498 version@stat F·[0 1] S·436B[0B 436B] Sc·[0.00 0.00]
+15:45:32.667758 syncDir: sync /var/hyperledger/production/orderer/index: invalid argument
+15:45:32.667889 table@commit error I·0 "sync /var/hyperledger/production/orderer/index: invalid argument"
+15:45:40.669020 table@commit retrying N·7
+15:45:40.669322 version@stat F·[0 1] S·436B[0B 436B] Sc·[0.00 0.00]
+15:45:40.670888 syncDir: sync /var/hyperledger/production/orderer/index: invalid argument
+15:45:40.671026 table@commit error I·0 "sync /var/hyperledger/production/orderer/index: invalid argument"
+15:45:48.673004 table@commit retrying N·8
+15:45:48.673783 version@stat F·[0 1] S·436B[0B 436B] Sc·[0.00 0.00]
+15:45:48.676982 syncDir: sync /var/hyperledger/production/orderer/index: invalid argument
+15:45:48.677609 table@commit error I·0 "sync /var/hyperledger/production/orderer/index: invalid argument"
+15:45:56.678312 table@commit retrying N·9
+15:45:56.678737 version@stat F·[0 1] S·436B[0B 436B] Sc·[0.00 0.00]
+15:45:56.679958 syncDir: sync /var/hyperledger/production/orderer/index: invalid argument
+15:45:56.680100 table@commit error I·0 "sync /var/hyperledger/production/orderer/index: invalid argument"
+15:46:04.680436 table@commit retrying N·10
+15:46:04.680675 version@stat F·[0 1] S·436B[0B 436B] Sc·[0.00 0.00]
+15:46:04.681778 syncDir: sync /var/hyperledger/production/orderer/index: invalid argument
+15:46:04.681890 table@commit error I·0 "sync /var/hyperledger/production/orderer/index: invalid argument"
+15:46:12.686197 table@commit retrying N·11
+15:46:12.687197 version@stat F·[0 1] S·436B[0B 436B] Sc·[0.00 0.00]
+15:46:12.692991 syncDir: sync /var/hyperledger/production/orderer/index: invalid argument
+15:46:12.693616 table@commit error I·0 "sync /var/hyperledger/production/orderer/index: invalid argument"
+15:46:20.694131 table@commit retrying N·12
+15:46:20.694340 version@stat F·[0 1] S·436B[0B 436B] Sc·[0.00 0.00]
+15:46:20.695513 syncDir: sync /var/hyperledger/production/orderer/index: invalid argument
+15:46:20.695624 table@commit error I·0 "sync /var/hyperledger/production/orderer/index: invalid argument"
+15:46:28.696460 table@commit retrying N·13
+15:46:28.697533 version@stat F·[0 1] S·436B[0B 436B] Sc·[0.00 0.00]
+15:46:28.704276 syncDir: sync /var/hyperledger/production/orderer/index: invalid argument
+15:46:28.705255 table@commit error I·0 "sync /var/hyperledger/production/orderer/index: invalid argument"
+=============== Jul 30, 2018 (UTC) ===============
+15:46:47.433448 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+15:46:47.445134 version@stat F·[0 1] S·436B[0B 436B] Sc·[0.00 0.00]
+15:46:47.446321 db@open opening
+15:46:47.449442 journal@recovery F·1
+15:46:47.450745 journal@recovery recovering @14
+15:46:47.468823 memdb@flush created L0@17 N·4 S·197B "asu..nfo,v51":"tes..nfo,v54"
+15:46:47.475713 version@stat F·[1 1] S·633B[197B 436B] Sc·[0.25 0.00]
+15:46:47.517435 db@janitor F·8 G·4
+15:46:47.517639 db@janitor removing table-4
+15:46:47.519546 db@janitor removing table-7
+15:46:47.522498 db@janitor removing table-10
+15:46:47.525521 db@janitor removing table-13
+15:46:47.527470 db@open done T·81.031912ms
+=============== Jul 30, 2018 (UTC) ===============
+15:50:54.531857 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+15:50:54.545613 version@stat F·[1 1] S·633B[197B 436B] Sc·[0.25 0.00]
+15:50:54.547402 db@open opening
+15:50:54.551392 journal@recovery F·1
+15:50:54.553127 journal@recovery recovering @18
+15:50:54.579604 memdb@flush created L0@20 N·4 S·197B "asu..nfo,v56":"tes..nfo,v59"
+15:50:54.589672 version@stat F·[2 1] S·830B[394B 436B] Sc·[0.50 0.00]
+15:50:54.610446 db@janitor F·5 G·0
+15:50:54.610585 db@open done T·63.071478ms
+=============== Jul 30, 2018 (UTC) ===============
+16:07:19.322607 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+16:07:19.336433 version@stat F·[2 1] S·830B[394B 436B] Sc·[0.50 0.00]
+16:07:19.338190 db@open opening
+16:07:19.347275 journal@recovery F·1
+16:07:19.348776 journal@recovery recovering @21
+16:07:19.367993 memdb@flush created L0@23 N·4 S·197B "asu..nfo,v61":"tes..nfo,v64"
+16:07:19.373570 version@stat F·[3 1] S·1KiB[591B 436B] Sc·[0.75 0.00]
+16:07:19.385343 db@janitor F·6 G·0
+16:07:19.385449 db@open done T·46.273408ms
