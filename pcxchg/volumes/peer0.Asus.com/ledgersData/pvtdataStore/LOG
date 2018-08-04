@@ -1,5 +1,0 @@
-=============== Jul 29, 2018 (UTC) ===============
-18:27:58.537010 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
-18:27:58.557477 db@open opening
-18:27:58.600249 version@stat F·[] S·0B[] Sc·[]
-18:27:58.687826 syncDir: sync /var/hyperledger/production/ledgersData/pvtdataStore: invalid argument
