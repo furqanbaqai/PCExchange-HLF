@@ -53,7 +53,7 @@ const client = new hfc();
 function invoke(opt, param) {
     return enrolUser(client, opt)
         .then(user => {
-            if (typeof user === "undefined" || !user.isEnrolled())
+            if (typeof user === "undefined" /*|| !user.isEnrolled()*/)
                 throw "User not enrolled";
 
             channel = initNetwork(client, opt, target);
@@ -86,7 +86,7 @@ function invoke(opt, param) {
 };
 
 // Options
-const _PATH_TO_CERTS='.';
+const _PATH_TO_CERTS='/home/baqai/b9labs/PCExchange-HLF/pcxchg/';
 const options = {
     Asus: {
         wallet_path: _PATH_TO_CERTS + '/producerApp/certs',
@@ -120,15 +120,24 @@ const app = express();
 const http = require('http');
 const bodyParser = require('body-parser');
 
-const server = http.createServer(app).listen(4000, function () {});
-app.use(bodyParser.json());
+app.engine('html', require('ejs').renderFile);
 
-app.post('/invoke', function (req, res, next) {
-    const args = req.body.args;
-    invoke(options[args[0]], args.slice(1))
-        .then(() => res.send("Chaincode invoked"))
-        .catch(err => {
-            res.status(500);
-            res.send(err.toString());
-        });
+const server = http.createServer(app).listen(4000, function() {});
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(__dirname));
+app.set('views', __dirname);
+
+app.post('/invoke', function(req, res, next) {
+  const args = req.body.args;
+  invoke(options[args[0]], args.slice(1))
+    .then(() => res.send("Chaincode invoked"))
+    .catch(err => {
+      res.status(500);
+      res.send(err.toString());
+    });
+});
+
+app.get('/', function(req, res) {
+  res.render('UI.html');
 });
