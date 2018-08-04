@@ -113,3 +113,22 @@ const options = {
         orderer_url: 'grpc://localhost:7050'
     }
 };
+
+// Server
+const express = require("express");
+const app = express();
+const http = require('http');
+const bodyParser = require('body-parser');
+
+const server = http.createServer(app).listen(4000, function () {});
+app.use(bodyParser.json());
+
+app.post('/invoke', function (req, res, next) {
+    const args = req.body.args;
+    invoke(options[args[0]], args.slice(1))
+        .then(() => res.send("Chaincode invoked"))
+        .catch(err => {
+            res.status(500);
+            res.send(err.toString());
+        });
+});
