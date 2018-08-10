@@ -2,6 +2,8 @@
 
 // Functions from figure
 const hfc = require('fabric-client');
+const target = [];
+const client = new hfc();
 let channel;
 
 // Here we use local files to get a "User"
@@ -46,8 +48,41 @@ const sendOrderer = function(channel, request) {
   return channel.sendTransaction(request);
 };
 
-const target = [];
-const client = new hfc();
+const initEventHub = function (client, eventUrl) {
+    const eh = client.newEventHub();
+    eh.setPeerAddr(eventUrl);
+    eh.connect();
+    return eh;
+};
+
+const catchEvent = function (eh, transactionID, timeout) {
+    return new Promise((resolve, reject) => {
+        const handle = setTimeout(
+            () => {
+                eh.unregisterTxEvent(transactionID);
+                eh.disconnect();
+                reject("Timed out");
+            },
+            timeout);
+
+        const txId = transactionID.getTransactionID();
+        eh.registerTxEvent(txId, (tx, code) => {
+            clearTimeout(handle);
+            eh.unregisterTxEvent(transactionID);
+            eh.disconnect();
+
+            if (code == 'VALID')
+                return resolve("Transaction is in a block.");
+            reject("Transaction is rejected. Code: " + code.toString());
+        });
+
+    });
+};
+
+Promise.all([
+    sendOrderer(channel, broadcastRequest),
+    catchEvent(eh, request.txId, 6000)
+])
 
 // Function invokes createPC on pcxchg
 function invoke(opt, param) {
