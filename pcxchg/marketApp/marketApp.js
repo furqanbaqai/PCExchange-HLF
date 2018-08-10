@@ -117,9 +117,10 @@ const query = function (opt, param, request) {
 };
 
 // Options
+const _PATH_TO_CERTS = '/home/baqai/b9labs/PCExchange-HLF/pcxchg/';
 const options = {
     Asus: {
-        wallet_path: '<YOUR APP PATH>/marketApp/certs',
+        wallet_path: _PATH_TO_CERTS +  '/marketApp/certs',
         user_id: 'AmazonAdmin',
         channel_id: 'asus',
         chaincode_id: 'pcxchg',
@@ -127,7 +128,7 @@ const options = {
         orderer_url: 'grpc://localhost:7050'
     },
     Hp: {
-        wallet_path: '<YOUR APP PATH>/marketApp/certs',
+        wallet_path: _PATH_TO_CERTS + '/marketApp/certs',
         user_id: 'AmazonAdmin',
         channel_id: 'hp',
         chaincode_id: 'pcxchg',
@@ -135,7 +136,7 @@ const options = {
         orderer_url: 'grpc://localhost:7050'
     },
     Dell: {
-        wallet_path: '<YOUR APP PATH>/marketApp/certs',
+        wallet_path: _PATH_TO_CERTS + '/marketApp/certs',
         user_id: 'AmazonAdmin',
         channel_id: 'dell',
         chaincode_id: 'pcxchg',
