@@ -199,7 +199,7 @@ app.post('/buyPC/invoke', function (req, res, next) {
 });
 
 app.get('/buyPC', function (req, res) {
-    res.render('buyPC.html');
+    res.render('buyPc.html');
 });
 
 app.get('/API/queryStock', function (req, res, next) {
