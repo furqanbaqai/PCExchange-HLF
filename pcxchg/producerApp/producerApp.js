@@ -103,11 +103,6 @@ const catchEvent = function (eh, transactionID, timeout) {
     });
 };
 
-Promise.all([
-    sendOrderer(channel, broadcastRequest),
-    catchEvent(eh, request.txId, 6000)
-])
-
 // Function invokes createPC on pcxchg
 function invoke(opt, param) {
     return enrolUserCA(client, opt)
