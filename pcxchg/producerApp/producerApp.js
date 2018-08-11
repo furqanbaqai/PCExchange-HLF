@@ -2,9 +2,14 @@
 
 // Functions from figure
 const hfc = require('fabric-client');
-const target = [];
-const client = new hfc();
 let channel;
+const enrolUser = function (client, options) {
+    return hfc.newDefaultKeyValueStore({ path: options.wallet_path })
+        .then(wallet => {
+            client.setStateStore(wallet);
+            return client.getUserContext(options.user_id, true);
+        });
+};
 
 const ca = require('fabric-ca-client');
 const User = require('fabric-client/lib/User.js');
@@ -30,84 +35,50 @@ const enrolUserCA = function (client, opt) {
         });
 };
 
-// Here we use local files to get a "User"
-const enrolUser = function(client, options) {
-  return hfc.newDefaultKeyValueStore({ path: options.wallet_path })
-    .then(wallet => {
-      client.setStateStore(wallet);
-      return client.getUserContext(options.user_id, true);
-    });
+const initNetwork = function (client, options, target) {
+    let channel;
+    try {
+        channel = client.newChannel(options.channel_id);
+        const peer = client.newPeer(options.peer_url);
+        target.push(peer);
+        channel.addPeer(peer);
+        channel.addOrderer(client.newOrderer(options.orderer_url));
+    } catch (e) { // channel already exists
+        channel = client.getChannel(options.channel_id);
+    }
+    return channel;
 };
 
-// Here we define set our client, we define channel and peers etc.
-const initNetwork = function(client, options, target) {
-  let channel;
-  try {
-    channel = client.newChannel(options.channel_id);
-    const peer = client.newPeer(options.peer_url);
-    target.push(peer);
-    channel.addPeer(peer);
-    channel.addOrderer(client.newOrderer(options.orderer_url));
-  } catch(e) { // channel already exists
-    channel = client.getChannel(options.channel_id);
-  }
-  return channel;
+const transactionProposal = function (client, channel, request) {
+    request.txId = client.newTransactionID();
+    return channel.sendTransactionProposal(request);
 };
 
-const transactionProposal = function(client, channel, request) {
-  request.txId = client.newTransactionID();
-  return channel.sendTransactionProposal(request);
+const responseInspect = function (results) {
+    const proposalResponses = results[0];
+    const proposal = results[1];
+    const header = results[2];
+
+    if (proposalResponses && proposalResponses.length > 0 &&
+        proposalResponses[0].response &&
+        proposalResponses[0].response.status === 200) {
+        return true;
+    }
+    return false;
 };
 
-const responseInspect = function(results) {
-  if (results[0] && results[0].length > 0 &&
-    results[0][0].response &&
-    results[0][0].response.status === 200) {
-    return true;
-  }
-  return false;
+const sendOrderer = function (channel, request) {
+    return channel.sendTransaction(request);
 };
 
-const sendOrderer = function(channel, request) {
-  return channel.sendTransaction(request);
-};
-
-const initEventHub = function (client, eventUrl) {
-    const eh = client.newEventHub();
-    eh.setPeerAddr(eventUrl);
-    eh.connect();
-    return eh;
-};
-
-const catchEvent = function (eh, transactionID, timeout) {
-    return new Promise((resolve, reject) => {
-        const handle = setTimeout(
-            () => {
-                eh.unregisterTxEvent(transactionID);
-                eh.disconnect();
-                reject("Timed out");
-            },
-            timeout);
-
-        const txId = transactionID.getTransactionID();
-        eh.registerTxEvent(txId, (tx, code) => {
-            clearTimeout(handle);
-            eh.unregisterTxEvent(transactionID);
-            eh.disconnect();
-
-            if (code == 'VALID')
-                return resolve("Transaction is in a block.");
-            reject("Transaction is rejected. Code: " + code.toString());
-        });
-
-    });
-};
+const target = [];
+const client = new hfc();
 
 // Function invokes createPC on pcxchg
 function invoke(opt, param) {
     return enrolUserCA(client, opt)
         .then(user => {
-            if (typeof user === "undefined" /*|| !user.isEnrolled()*/)
+            if (typeof user === "undefined" || !user.isEnrolled())
                 throw "User not enrolled";
 
             channel = initNetwork(client, opt, target);
@@ -140,8 +111,7 @@ function invoke(opt, param) {
 };
 
 // Options
-const _PATH_TO_CERTS='/home/baqai/b9labs/PCExchange-HLF/pcxchg/';
-const options = {
+var options = {
     Asus: {
         wallet_path: './certs/asus',
         user_id: 'AsusAdmin',
@@ -177,30 +147,32 @@ const options = {
     }
 };
 
+
 // Server
 const express = require("express");
 const app = express();
 const http = require('http');
 const bodyParser = require('body-parser');
+const path = require('path');
 
 app.engine('html', require('ejs').renderFile);
 
-const server = http.createServer(app).listen(4000, function() {});
+const server = http.createServer(app).listen(4000, function () { });
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname));
 app.set('views', __dirname);
 
-app.post('/invoke', function(req, res, next) {
-  const args = req.body.args;
-  invoke(options[args[0]], args.slice(1))
-    .then(() => res.send("Chaincode invoked"))
-    .catch(err => {
-      res.status(500);
-      res.send(err.toString());
-    });
+app.post('/invoke', function (req, res, next) {
+    const args = req.body.args;
+    invoke(options[args[0]], args.slice(1))
+        .then(() => res.send("Chaincode invoked"))
+        .catch(err => {
+            res.status(500);
+            res.send(err.toString());
+        });
 });
 
-app.get('/', function(req, res) {
-  res.render('UI.html');
+app.get('/', function (req, res) {
+    res.render('UI.html');
 });
