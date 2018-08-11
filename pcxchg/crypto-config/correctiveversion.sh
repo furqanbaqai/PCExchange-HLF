@@ -1,0 +1,1 @@
+awk '{ if ($1=="version:") print $1, 1.1.0; else print $0}' fabric-ca-server-config.yaml > temp.out | mv temp.out fabric-ca-server-config.yaml

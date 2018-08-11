@@ -16,3 +16,4 @@ docker exec cli.HP bash -c 'peer channel update -o orderer.pcxchg.com:7050 -c hp
 docker exec cli.Amazon bash -c 'peer channel update -o orderer.pcxchg.com:7050 -c asus -f ./channels/amazonanchorasus.tx'
 docker exec cli.Amazon bash -c 'peer channel update -o orderer.pcxchg.com:7050 -c dell -f ./channels/amazonanchordell.tx'
 docker exec cli.Amazon bash -c 'peer channel update -o orderer.pcxchg.com:7050 -c hp -f ./channels/amazonanchorhp.tx'
+
