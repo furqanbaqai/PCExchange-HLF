@@ -11,7 +11,7 @@
 # Organization info where each line is of the form:
 #    <type>:<orgName>:<rootCAPort>:<intermediateCAPort>:<numOrderersOrPeers>
 ORGS="\
-   orderer:pcxchg.com:7100:7101:1 \
+   orderer:pcxchg.com:7100:7101:3 \
    peer:Asus.com:7102:7103:2 \
    peer:Amazon.com:7104:7105:2 \
    peer:HP.com:7106:7107:2 \
@@ -361,3 +361,4 @@ function debug {
 }
 
 main
+

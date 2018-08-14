@@ -12,6 +12,7 @@ Profiles:
                     - *Dell
                     - *HP
                     - *Amazon
+
     AsusChannel:
         Consortium: PCXCHG
         Application:
@@ -33,6 +34,7 @@ Profiles:
             Organizations:
                 - *HP
                 - *Amazon
+
 Organizations:
 
     - &OrdererOrg
@@ -82,14 +84,29 @@ Organizations:
               Port: 7051
 
 Orderer: &OrdererDefaults
-    OrdererType: solo
+    OrdererType: kafka
+
     Addresses:
-        - orderer.pcxchg.com:7050
+        - orderer0.pcxchg.com:7050
+        - orderer1.pcxchg.com:7050
+        - orderer2.pcxchg.com:7050
+
     BatchTimeout: 2s
+
     BatchSize:
+
         MaxMessageCount: 10
         AbsoluteMaxBytes: 99 MB
         PreferredMaxBytes: 512 KB
+
+
+    Kafka:
+        Brokers:
+            - kafka0:9092
+            - kafka1:9092
+            - kafka2:9092
+            - kafka3:9092
+
     Organizations:
 
 
